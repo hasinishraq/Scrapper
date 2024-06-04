@@ -35,14 +35,14 @@ def monitor_notices():
         notices = get_notice_links(notice_url)
         
         for title, link in notices:
-            logging.info(f"Notice: {title}\nLink: {link}\n")
+            print(f"Notice: {title}\nLink: {link}\n")
         
         # Wait for an hour before checking again
         time.sleep(3600)
 
 def start_http_server():
     port = int(os.environ.get("PORT", 8000))
-    server_address = ('0,0,0,0', port)
+    server_address = ('', port)
     httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
     logging.info(f"Starting HTTP server on port {port}")
     httpd.serve_forever()
