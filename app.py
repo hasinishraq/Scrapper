@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import time
 
 def get_notice_links(url):
     response = requests.get(url)
@@ -18,10 +19,14 @@ def get_notice_links(url):
 
 def main():
     notice_url = 'https://www.uiu.ac.bd/notice'
-    notices = get_notice_links(notice_url)
-    
-    for title, link in notices:
-        print(f"Notice: {title}\nLink: {link}\n")
+    while True:
+        notices = get_notice_links(notice_url)
+        
+        for title, link in notices:
+            print(f"Notice: {title}\nLink: {link}\n")
+        
+        # Wait for an hour before checking again
+        time.sleep(3600)
 
 if __name__ == "__main__":
     main()
