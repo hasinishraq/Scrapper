@@ -42,7 +42,7 @@ def monitor_notices():
 
 def start_http_server():
     port = int(os.environ.get("PORT", 10000))
-    server_address = ('127.0.0.1', port)
+    server_address = ('0.0.0.0', port)
     httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
     logging.info(f"Starting HTTP server on port {port}")
     httpd.serve_forever()
